@@ -1,24 +1,29 @@
 #include <iostream>
 using namespace std;
-const int maxn = 1005;
-
+const int maxn = 1e3 + 5;
 int arr[maxn][maxn];
+
 int main()
 {
-    // cout << 222 << endl;
     int n, m;
-    int a, b, c, d;
     scanf("%d%d", &n, &m);
-    for (int i = 0; i < m; i++)
+    int ax, ay, bx, by;
+    while (m--)
     {
-        scanf("%d%d%d%d", &a, &b, &c, &d);
-        a--;b--;c--;d--;
-        for (int x = a; x <= c; x++)
-            for (int y = b; y <= d; y++)
-                arr[x][y]++;
+        scanf("%d%d%d%d", &ax, &ay, &bx, &by);
+        for (int i = ax; i <= bx; i++)
+        {
+            arr[i][ay]++;
+            arr[i][by+1]--;
+        }
     }
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            printf("%d%c", arr[i][j], i!=n-1 && j==n-1?'\n':' ');
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n;j++)
+        {
+            arr[i][j] += arr[i][j-1];
+            printf("%d%c", arr[i][j], i != n && j == n ? '\n' : ' ');
+        }
+    }
     return 0;
 }
