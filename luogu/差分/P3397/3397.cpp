@@ -1,3 +1,10 @@
+/*
+使用差分，对于某一个方形，(1,1), (3, 3)，则可以有
+1 0 0 -1
+1 0 0 -1
+1 0 0 -1
+其中，元素arr[i][j]的值表示matrix[i][j]-matrix[i][j-1]
+*/
 #include <iostream>
 using namespace std;
 const int maxn = 1e3 + 5;
